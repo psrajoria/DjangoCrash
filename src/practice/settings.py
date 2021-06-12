@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     
     #my created apps
     'hello',
+    'isitchristmas',
 ]
 
 MIDDLEWARE = [
