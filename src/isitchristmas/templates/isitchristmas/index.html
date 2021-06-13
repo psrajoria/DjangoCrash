@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -5,25 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <!-- <style>
-      .main_out {
-        text-align: center;
-        font-size: 160px;
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        /* bring your own prefixes */
-        transform: translate(-50%, -50%);
-      }
-    </style> -->
+    <link href="{% static 'isitchristmas/styles.css' %}" rel="stylesheet" />
+    
   </head>
   <body>
     {% if answer %}
-        <h1 >Yes</h1>
+    <h1>Yes</h1>
     {% else %}
-        <h1>No</h1>
+    <h1>No</h1>
     {% endif %}
-
-    
   </body>
 </html>
