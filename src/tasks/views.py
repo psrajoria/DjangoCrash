@@ -1,5 +1,7 @@
 from django.forms.fields import CharField
-from django.shortcuts import redirect, render
+from django.http.response import HttpResponseRedirect
+from django.shortcuts import  render
+from django.urls import reverse
 from django import forms
 
 
@@ -8,7 +10,7 @@ class NewTaskForm(forms.Form):
                            widget=forms.TextInput(attrs={'placeholder': 'Task'}))
 
 
-tasks = ["foo", "boo", "doo"]
+tasks = []
 
 # Create your views here.
 
@@ -25,6 +27,8 @@ def add_task(request):
         if form.is_valid():
             task = form.cleaned_data['task']
             tasks.append(task)
+            #### To reverse engineer URL
+            return HttpResponseRedirect(reverse("tasks:index"))
         else:
             render(request, "tasks/add.html", {
                 'form': form
