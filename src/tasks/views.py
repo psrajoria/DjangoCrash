@@ -16,8 +16,11 @@ tasks = []
 
 
 def index(request):
+    ## to check if the tasks already exists in the session
+    if "tasks" not in request.session:
+        request.session["tasks"]=[]
     return render(request, "tasks/index.html", {
-        'tasks': tasks
+        'tasks': request.session["tasks"]
     })
 
 
@@ -26,7 +29,8 @@ def add_task(request):
         form = NewTaskForm(request.POST)
         if form.is_valid():
             task = form.cleaned_data['task']
-            tasks.append(task)
+            request.session["tasks"] += [task]
+            # tasks.append(task)
             #### To reverse engineer URL
             return HttpResponseRedirect(reverse("tasks:index"))
         else:
